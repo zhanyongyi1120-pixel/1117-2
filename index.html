@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>p5.js 動畫</title>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <script src="libraries/p5.min.js"></script>
+    <script src="libraries/p5.sound.min.js"></script>
+  </head>
+  <body>
+    <!-- 隱藏式選單 -->
+    <nav id="side-menu">
+      <ul>
+        <li><a href="#" id="show-work">第一單元作品</a></li>
+        <li><a href="#" id="show-lecture">第一單元講義</a></li>
+        <li><a href="#" id="show-quiz">測驗系統</a></li>
+        <li><a href="#">回到首頁</a></li>
+      </ul>
+    </nav>
+
+    <!-- Iframe 彈出視窗 -->
+    <div id="iframe-overlay">
+      <div id="iframe-container">
+        <button id="close-iframe">×</button>
+        <iframe id="lecture-iframe" src="" frameborder="0"></iframe>
+      </div>
+    </div>
+
+    <main><div class="student-info">412730920 詹詠詒</div></main>
+    <script src="sketch.js"></script>
+  </body>
+</html>

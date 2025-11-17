@@ -1,0 +1,132 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #000; /* 螢幕為黑色 */
+  color: white;
+  font-family: sans-serif;
+  overflow: hidden; /* 避免畫布置中時出現滾動條 */
+}
+
+canvas {
+  display: block;
+}
+
+/* p5.js 畫布的容器 */
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* 選單容器 */
+#side-menu {
+  position: fixed;
+  top: 0;
+  left: -240px; /* 預設將大部分選單隱藏在畫面左側外 */
+  width: 300px;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+  transition: left 0.3s ease-in-out;
+  z-index: 1000;
+  padding-top: 60px;
+  box-sizing: border-box;
+}
+
+/* 滑鼠移入時，將選單滑出 */
+#side-menu:hover {
+  left: 0;
+}
+
+/* 選單項目樣式 */
+#side-menu ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#side-menu ul li a {
+  display: block;
+  padding: 15px 30px;
+  color: white;
+  text-decoration: none;
+  font-size: 32px; /* 設定文字大小 */
+}
+
+#side-menu ul li a:hover {
+  background-color: #555;
+}
+
+/* Iframe 彈出視窗的覆蓋層 */
+#iframe-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8); /* 半透明黑色背景 */
+  display: none; /* 預設隱藏 */
+  justify-content: center;
+  align-items: center;
+  z-index: 2000; /* 確保在最上層 */
+}
+
+/* Iframe 的容器 */
+#iframe-container {
+  position: relative;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  /* 設定 iframe 視窗大小（使用百分比） */
+  width: 70%; /* 70% 視窗寬度 */
+  height: 85%; /* 85% 視窗高度 */
+}
+
+/* Iframe 本身 */
+#lecture-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* 關閉按鈕 */
+#close-iframe {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 30px;
+  color: #333;
+  cursor: pointer;
+}
+
+/* 學號姓名置底顯示 */
+.student-info {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 22px;
+  font-size: 32px;
+  color: #fff;
+  background: rgba(0,0,0,0.45);
+  padding: 8px 16px;
+  border-radius: 8px;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.45);
+  text-shadow: 0 4px 10px rgba(0,0,0,0.35);
+  transition: transform 220ms ease, box-shadow 220ms ease;
+  z-index: 3000;
+  opacity: 0;
+  animation: studentSlideUp 700ms cubic-bezier(.22,.9,.33,1) forwards;
+}
+
+@keyframes studentSlideUp {
+  from { transform: translate(-50%, 20px) scale(0.98); opacity: 0; }
+  to   { transform: translate(-50%, 0) scale(1); opacity: 1; }
+}
+
+.student-info:hover {
+  transform: translateX(-50%) translateY(-6px) scale(1.02);
+  box-shadow: 0 14px 36px rgba(0,0,0,0.55);
+}
